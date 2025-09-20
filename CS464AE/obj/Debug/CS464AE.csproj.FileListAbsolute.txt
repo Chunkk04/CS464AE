@@ -15,3 +15,11 @@ D:\.NET\CS464AE\CS464AE\obj\Debug\CS464AE.exe
 D:\.NET\CS464AE\CS464AE\obj\Debug\CS464AE.pdb
 D:\.NET\CS464AE\CS464AE\obj\Debug\Login.g.cs
 D:\.NET\CS464AE\CS464AE\obj\Debug\Login.baml
+D:\.NET\CS464AE\CS464AE\bin\Debug\ToDoList.mdf
+D:\.NET\CS464AE\CS464AE\bin\Debug\ToDoList_log.ldf
+D:\.NET\CS464AE\CS464AE\bin\Debug\EntityFramework.dll
+D:\.NET\CS464AE\CS464AE\bin\Debug\EntityFramework.SqlServer.dll
+D:\.NET\CS464AE\CS464AE\bin\Debug\EntityFramework.xml
+D:\.NET\CS464AE\CS464AE\bin\Debug\EntityFramework.SqlServer.xml
+D:\.NET\CS464AE\CS464AE\obj\Debug\CS464AE_Content.g.cs
+D:\.NET\CS464AE\CS464AE\obj\Debug\CS464AE.csproj.CopyComplete

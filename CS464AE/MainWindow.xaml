@@ -32,7 +32,7 @@
                     <Button x:Name="btnLogin" Content="Đăng nhập" Click="BtnLogin_Click" 
                            Background="#A23B72" Foreground="White" Padding="10,5" Margin="5,0"/>
                     <Button x:Name="btnLogout" Content="Đăng xuất" Click="BtnLogout_Click" 
-                           Background="#A23B72" Foreground="White" Padding="10,5" Margin="5,0" IsEnabled="False"/>
+                           Background="#A23B72" Foreground="White" Padding="10,5" Margin="5,0"/>
                 </StackPanel>
             </Grid>
         </Border>
@@ -82,13 +82,17 @@
 
             <!-- Todo List -->
             <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="727*"/>
+                    <ColumnDefinition Width="42*"/>
+                </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
                 <!-- Toolbar -->
-                <Border Grid.Row="0" Background="White" BorderBrush="#DDD" BorderThickness="0,0,0,1" Padding="10">
+                <Border Grid.Row="0" Background="White" BorderBrush="#DDD" BorderThickness="0,0,0,1" Padding="10" Grid.ColumnSpan="2" Margin="0,0,-0.2,0">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -101,17 +105,17 @@
                         <StackPanel Grid.Column="1" Orientation="Horizontal">
                             <Button x:Name="btnAddTodo" Content="➕ Thêm mới" Click="BtnAddTodo_Click" 
                                    Background="#2E86AB" Foreground="White" Padding="10,5" Margin="5,0"/>
-                            <Button x:Name="btnEditTodo" Content="✏️ Sửa" Click="BtnEditTodo_Click" 
-                                   Background="#A23B72" Foreground="White" Padding="10,5" Margin="5,0" IsEnabled="False"/>
-                            <Button x:Name="btnDeleteTodo" Content="🗑️ Xóa" Click="BtnDeleteTodo_Click" 
-                                   Background="#F18F01" Foreground="White" Padding="10,5" Margin="5,0" IsEnabled="False"/>
+                            <Button x:Name="btnEdit" Content="✏️ Sửa" Click="BtnAddTodo_Click" 
+                                   Background="#2E86AB" Foreground="White" Padding="10,5" Margin="5,0"/>
+                            <Button x:Name="btnDelete" Content="🗑️ Xóa" Click="BtnAddTodo_Click" 
+                                   Background="#2E86AB" Foreground="White" Padding="10,5" Margin="5,0"/>
                         </StackPanel>
                     </Grid>
                 </Border>
 
                 <!-- Todo Items List -->
-                <ListView x:Name="lvTodos" Grid.Row="1" Margin="10" 
-                         SelectionChanged="LvTodos_SelectionChanged">
+                <ListView x:Name="lvTodos" Grid.Row="1" Margin="10,10,9.8,10.2" 
+                         SelectionChanged="LvTodos_SelectionChanged" Grid.ColumnSpan="2">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Trạng thái" Width="80">
