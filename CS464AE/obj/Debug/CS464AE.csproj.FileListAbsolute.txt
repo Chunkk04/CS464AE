@@ -1,0 +1,17 @@
+D:\.NET\CS464AE\CS464AE\obj\Debug\CS464AE.csprojAssemblyReference.cache
+D:\.NET\CS464AE\CS464AE\obj\Debug\MainWindow.g.cs
+D:\.NET\CS464AE\CS464AE\obj\Debug\App.g.cs
+D:\.NET\CS464AE\CS464AE\obj\Debug\CS464AE_MarkupCompile.cache
+D:\.NET\CS464AE\CS464AE\obj\Debug\CS464AE_MarkupCompile.lref
+D:\.NET\CS464AE\CS464AE\bin\Debug\CS464AE.exe.config
+D:\.NET\CS464AE\CS464AE\bin\Debug\CS464AE.exe
+D:\.NET\CS464AE\CS464AE\bin\Debug\CS464AE.pdb
+D:\.NET\CS464AE\CS464AE\obj\Debug\MainWindow.baml
+D:\.NET\CS464AE\CS464AE\obj\Debug\CS464AE.g.resources
+D:\.NET\CS464AE\CS464AE\obj\Debug\CS464AE.Properties.Resources.resources
+D:\.NET\CS464AE\CS464AE\obj\Debug\CS464AE.csproj.GenerateResource.cache
+D:\.NET\CS464AE\CS464AE\obj\Debug\CS464AE.csproj.CoreCompileInputs.cache
+D:\.NET\CS464AE\CS464AE\obj\Debug\CS464AE.exe
+D:\.NET\CS464AE\CS464AE\obj\Debug\CS464AE.pdb
+D:\.NET\CS464AE\CS464AE\obj\Debug\Login.g.cs
+D:\.NET\CS464AE\CS464AE\obj\Debug\Login.baml
