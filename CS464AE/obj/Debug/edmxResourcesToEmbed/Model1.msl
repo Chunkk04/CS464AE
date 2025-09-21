@@ -1,13 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="ToDoListModelStoreContainer" CdmEntityContainer="ToDoListEntities">
+  <EntityContainerMapping StorageEntityContainer="DatabaseModelStoreContainer" CdmEntityContainer="DatabaseEntities">
+    <EntitySetMapping Name="TodoItems">
+      <EntityTypeMapping TypeName="DatabaseModel.TodoItem">
+        <MappingFragment StoreEntitySet="TodoItems">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CompletedDate" ColumnName="CompletedDate" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Users">
-      <EntityTypeMapping TypeName="ToDoListModel.User">
-        <MappingFragment StoreEntitySet="User">
+      <EntityTypeMapping TypeName="DatabaseModel.User">
+        <MappingFragment StoreEntitySet="Users">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
           <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
           <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
+          <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

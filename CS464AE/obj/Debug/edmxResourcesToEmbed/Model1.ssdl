@@ -1,15 +1,49 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="ToDoListModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="User">
+<Schema Namespace="DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="TodoItems">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="TenDangNhap" Type="nvarchar" MaxLength="50" />
-    <Property Name="MatKhau" Type="nvarchar" MaxLength="50" />
-    <Property Name="SoDienThoai" Type="int" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="IsCompleted" Type="bit" Nullable="false" />
+    <Property Name="Category" Type="nvarchar" MaxLength="50" />
+    <Property Name="DueDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="CompletedDate" Type="datetime2" Precision="7" />
+    <Property Name="UserId" Type="int" Nullable="false" />
   </EntityType>
-  <EntityContainer Name="ToDoListModelStoreContainer">
-    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenDangNhap" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MatKhau" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SoDienThoai" Type="nvarchar" MaxLength="15" />
+    <Property Name="NgayTao" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__TodoItems__UserI__3C69FB99">
+    <End Role="Users" Type="Self.Users" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TodoItems" Type="Self.TodoItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TodoItems">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DatabaseModelStoreContainer">
+    <EntitySet Name="TodoItems" EntityType="Self.TodoItems" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__TodoItems__UserI__3C69FB99" Association="Self.FK__TodoItems__UserI__3C69FB99">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="TodoItems" EntitySet="TodoItems" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

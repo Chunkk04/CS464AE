@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database.mdf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database_log.ldf")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model1.context.tt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model1.tt")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("todolist.mdf")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("todolist_log.ldf")]
 
 

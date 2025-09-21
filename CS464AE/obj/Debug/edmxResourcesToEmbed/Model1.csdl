@@ -1,15 +1,51 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="ToDoListModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TodoItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsCompleted" Type="Boolean" Nullable="false" />
+    <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DueDate" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="CompletedDate" Type="DateTime" Precision="7" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK__TodoItems__UserI__3C69FB99" FromRole="TodoItems" ToRole="Users" />
+  </EntityType>
   <EntityType Name="User">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
-    <Property Name="TenDangNhap" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="SoDienThoai" Type="Int32" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenDangNhap" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SoDienThoai" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="NgayTao" Type="DateTime" Nullable="false" Precision="7" />
+    <NavigationProperty Name="TodoItems" Relationship="Self.FK__TodoItems__UserI__3C69FB99" FromRole="Users" ToRole="TodoItems" />
   </EntityType>
-  <EntityContainer Name="ToDoListEntities" annotation:LazyLoadingEnabled="true">
+  <Association Name="FK__TodoItems__UserI__3C69FB99">
+    <End Role="Users" Type="Self.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TodoItems" Type="Self.TodoItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TodoItems">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TodoItems" EntityType="Self.TodoItem" />
     <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK__TodoItems__UserI__3C69FB99" Association="Self.FK__TodoItems__UserI__3C69FB99">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="TodoItems" EntitySet="TodoItems" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

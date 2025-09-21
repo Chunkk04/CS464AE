@@ -13,10 +13,10 @@ namespace CS464AE
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ToDoListEntities : DbContext
+    public partial class DatabaseEntities : DbContext
     {
-        public ToDoListEntities()
-            : base("name=ToDoListEntities")
+        public DatabaseEntities()
+            : base("name=DatabaseEntities")
         {
         }
     
@@ -25,6 +25,7 @@ namespace CS464AE
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<TodoItem> TodoItems { get; set; }
         public virtual DbSet<User> Users { get; set; }
     }
 }

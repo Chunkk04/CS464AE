@@ -14,9 +14,19 @@ namespace CS464AE
     
     public partial class User
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public User()
+        {
+            this.TodoItems = new HashSet<TodoItem>();
+        }
+    
         public int Id { get; set; }
         public string TenDangNhap { get; set; }
         public string MatKhau { get; set; }
-        public Nullable<int> SoDienThoai { get; set; }
+        public string SoDienThoai { get; set; }
+        public System.DateTime NgayTao { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TodoItem> TodoItems { get; set; }
     }
 }

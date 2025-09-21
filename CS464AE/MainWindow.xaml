@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CS464AE"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1025">
+        Title="MainWindow" Height="600" Width="1025"
+        FontFamily="Segoe UI" FontSize="12">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -104,7 +105,7 @@
                                    Background="#2E86AB" Foreground="White" Padding="10,5" Margin="5,0"/>
                             <Button x:Name="btnEdit" Content="✏️ Sửa" Click="BtnAddTodo_Click" 
                                    Background="#2E86AB" Foreground="White" Padding="10,5" Margin="5,0"/>
-                            <Button x:Name="btnDelete" Content="🗑️ Xóa" Click="BtnAddTodo_Click" 
+                            <Button x:Name="btnDelete" Content="🗑️ Xóa" Click="BtnDeleteTodo_Click" 
                                    Background="#2E86AB" Foreground="White" Padding="10,5" Margin="5,0"/>
                         </StackPanel>
                     </Grid>
@@ -112,7 +113,8 @@
 
                 <!-- Todo Items List -->
                 <ListView x:Name="lvTodos" Grid.Row="1" Margin="10,10,9.8,10.2" 
-                         SelectionChanged="LvTodos_SelectionChanged" Grid.ColumnSpan="2">
+                         SelectionChanged="LvTodos_SelectionChanged" Grid.ColumnSpan="2"
+                         ItemsSource="{Binding TodoItems}">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Trạng thái" Width="80">
@@ -123,8 +125,20 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Header="Tiêu đề" DisplayMemberBinding="{Binding Title}" Width="200"/>
-                            <GridViewColumn Header="Mô tả" DisplayMemberBinding="{Binding Description}" Width="250"/>
+                            <GridViewColumn Header="Tiêu đề" Width="200">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Title}" FontFamily="Segoe UI" TextWrapping="Wrap"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Mô tả" Width="250">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Description}" FontFamily="Segoe UI" TextWrapping="Wrap"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
                             <GridViewColumn Header="Hạn chót" Width="120">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
@@ -132,7 +146,13 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Header="Danh mục" DisplayMemberBinding="{Binding Category}" Width="100"/>
+                            <GridViewColumn Header="Danh mục" Width="100">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Category}" FontFamily="Segoe UI"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
                         </GridView>
                     </ListView.View>
                 </ListView>
