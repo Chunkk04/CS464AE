@@ -24,3 +24,4 @@ D:\.NET\CS464AE\CS464AE\obj\Debug\CS464AE.csproj.CoreCompileInputs.cache
 D:\.NET\CS464AE\CS464AE\obj\Debug\CS464AE.csproj.CopyComplete
 D:\.NET\CS464AE\CS464AE\obj\Debug\CS464AE.exe
 D:\.NET\CS464AE\CS464AE\obj\Debug\CS464AE.pdb
+D:\.NET\CS464AE\CS464AE\obj\Debug\CS464AE.csprojAssemblyReference.cache

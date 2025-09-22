@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:CS464AE"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1025"
+        
         FontFamily="Segoe UI" FontSize="12">
     <Grid>
         <Grid.RowDefinitions>
@@ -121,7 +122,10 @@
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <CheckBox IsChecked="{Binding IsCompleted}" 
-                                                 IsEnabled="False" HorizontalAlignment="Center"/>
+                                                  IsEnabled="True" 
+                                                  HorizontalAlignment="Center"
+                                                  Checked="CheckBox_Checked"
+                                                  Unchecked="CheckBox_Unchecked"/>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>

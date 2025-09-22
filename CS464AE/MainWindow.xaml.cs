@@ -289,5 +289,78 @@ namespace CS464AE
             _repository?.Dispose();
             base.OnClosed(e);
         }
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            var checkBox = sender as CheckBox;
+            var todoItem = checkBox.DataContext as TodoItem;
+
+            if (todoItem != null && _currentUserId > 0)
+            {
+                try
+                {
+                    todoItem.IsCompleted = true;
+                    todoItem.CompletedDate = DateTime.Now;
+
+                    if (_repository.UpdateTodo(todoItem))
+                    {
+                        txtStatus.Text = $"Đã hoàn thành: {todoItem.Title}";
+                        UpdateStatistics();
+                    }
+                    else
+                    {
+                        // Rollback nếu update thất bại
+                        todoItem.IsCompleted = false;
+                        todoItem.CompletedDate = null;
+                        checkBox.IsChecked = false;
+                        txtStatus.Text = "Không thể cập nhật trạng thái!";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Rollback nếu có lỗi
+                    todoItem.IsCompleted = false;
+                    todoItem.CompletedDate = null;
+                    checkBox.IsChecked = false;
+                    txtStatus.Text = $"Lỗi: {ex.Message}";
+                }
+            }
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            var checkBox = sender as CheckBox;
+            var todoItem = checkBox.DataContext as TodoItem;
+
+            if (todoItem != null && _currentUserId > 0)
+            {
+                try
+                {
+                    todoItem.IsCompleted = false;
+                    todoItem.CompletedDate = null;
+
+                    if (_repository.UpdateTodo(todoItem))
+                    {
+                        txtStatus.Text = $"Đã hủy hoàn thành: {todoItem.Title}";
+                        UpdateStatistics();
+                    }
+                    else
+                    {
+                        // Rollback nếu update thất bại
+                        todoItem.IsCompleted = true;
+                        todoItem.CompletedDate = DateTime.Now;
+                        checkBox.IsChecked = true;
+                        txtStatus.Text = "Không thể cập nhật trạng thái!";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Rollback nếu có lỗi
+                    todoItem.IsCompleted = true;
+                    todoItem.CompletedDate = DateTime.Now;
+                    checkBox.IsChecked = true;
+                    txtStatus.Text = $"Lỗi: {ex.Message}";
+                }
+            }
+        }
     }
 }
